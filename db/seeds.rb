@@ -5,6 +5,7 @@ prework_tutorial_data = {
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
   "classroom"=>false,
 }
+
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
 prework_tutorial.videos.create!({
@@ -35,7 +36,6 @@ prework_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/c2UnIQ3LRnM/hqdefault.jpg",
   "position"=>4
 })
-
 
 mod_1_tutorial_data = {
   "title"=>"Back End Engineering - Module 1",
@@ -70,6 +70,7 @@ mod_3_tutorial_data = {
   "classroom"=>false,
   "tag_list"=>["Internet", "BDD", "Ruby"],
 }
+
 m3_tutorial = Tutorial.create! mod_3_tutorial_data
 
 m3_tutorial.videos.create!({
