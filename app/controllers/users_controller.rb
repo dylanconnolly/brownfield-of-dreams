@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    render locals: {
+      repo_data: UserDashboardFacade.new.take_5_repos
+    }
+  end
 
   def new
     @user = User.new
