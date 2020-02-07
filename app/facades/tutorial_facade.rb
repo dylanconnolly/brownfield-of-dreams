@@ -21,7 +21,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def videos?
-    videos.count > 0
+    videos.count.positive?
   end
 
   private
