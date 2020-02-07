@@ -7,7 +7,7 @@ class GithubService
 
   def connection
     Faraday.new('https://api.github.com') do |f|
-      f.headers["Authorization"] = "token #{ENV["GITHUB_PERSONAL_TOKEN"]}"
+      f.headers['Authorization'] = "token #{ENV["GITHUB_PERSONAL_TOKEN"]}"
       f.adapter Faraday.default_adapter
     end
   end
