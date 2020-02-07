@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'when a user visits their dashboard' do
   scenario 'they see a section for github repositories and see 5 listed', :vcr do
-    user = create(:user, github_token: ENV['GITHUB_PERSONAL_TOKEN'])
+    user = create(:user)
 
     stub_user(user)
 
@@ -16,8 +16,8 @@ describe 'when a user visits their dashboard' do
   end
 
   scenario 'they see their github repositories and not another users', :vcr do
-    user = create(:user, github_token: ENV['GITHUB_PERSONAL_TOKEN'])
-    user2 = create(:user, github_token: "SLFKHAFALKSHF")
+    user = create(:user)
+    user2 = create(:user)
     # user2 = create(:user, github_token: ENV['SECONDARY_GITHUB_PERSONAL_TOKEN'])
 
     stub_user(user2)

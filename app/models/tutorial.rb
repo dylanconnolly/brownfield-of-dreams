@@ -6,7 +6,7 @@ class Tutorial < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :thumbnail, presence: true
-  
+
   def self.no_classroom
     where(classroom: false)
   end

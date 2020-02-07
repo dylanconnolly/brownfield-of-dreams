@@ -10,9 +10,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-</section>
 
-<% if current_user.github_token %>
   <section>
     <h1> GitHub </h1>
       <section id='github-repos'>
@@ -23,4 +21,22 @@
             </ul>
           <% end %>
       </section>
-<% end %>
+      <section id='github-followers'>
+        <h3> Followers </h3>
+          <% followers_data.each do |follower| %>
+            <ul class='github-follower'>
+              <li class='login'><%= link_to follower.login, follower.html_url %></li>
+            </ul>
+          <% end %>
+      </section>
+      <section id='github-followings'>
+        <h3> Following </h3>
+          <% following_data.each do |following| %>
+            <ul class='github-followimng'>
+              <li class='login'><%= link_to following.login, following.html_url %></li>
+            </ul>
+          <% end %>
+      </section>
+  </section>
+
+</section>
