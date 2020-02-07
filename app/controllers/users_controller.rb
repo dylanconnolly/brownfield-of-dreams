@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    if current_user.github_token
+    render locals: {
+      repo_data: UserDashboardFacade.new.take_5_repos
+    }
+    end
+  end
 
   def new
     @user = User.new
