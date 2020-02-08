@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get 'auth/github', as: 'github_login'
-  get '/auth/github/callback', to: 'users#update'
+  get '/auth/github/callback', to: 'users#edit'
 
   get '/dashboard', to: 'users#show'
   # Is this being used?
