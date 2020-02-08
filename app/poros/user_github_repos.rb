@@ -1,6 +1,6 @@
 class UserGithubRepos
-  def repos
-    @repos ||= GithubService.new.user_repos.map do |repo_data|
+  def repos(token)
+    @repos ||= GithubService.new(token).user_repos.map do |repo_data|
       Repo.new(repo_data)
     end
   end
