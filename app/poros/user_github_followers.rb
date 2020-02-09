@@ -1,6 +1,6 @@
 class UserGithubFollowers
-  def followers
-    @followers ||= GithubService.new.user_followers.map do |follower_data|
+  def followers(token)
+    @followers ||= GithubService.new(token).user_followers.map do |follower_data|
       Follower.new(follower_data)
     end
   end

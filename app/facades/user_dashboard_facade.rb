@@ -1,13 +1,13 @@
 class UserDashboardFacade
-  def take_5_repos
-    UserGithubRepos.new.repos.take(5)
+  def take_5_repos(token)
+    UserGithubRepos.new.repos(token).take(5)
   end
 
-  def all_followers
-    UserGithubFollowers.new.followers
+  def all_followers(token)
+    UserGithubFollowers.new.followers(token)
   end
 
-  def all_followings
-    UserGithubFollowing.new.followings
+  def all_followings(token)
+    UserGithubFollowing.new.followings(token)
   end
 end
