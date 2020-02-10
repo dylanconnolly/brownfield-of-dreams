@@ -5,7 +5,7 @@ feature 'An admin visiting the admin dashboard' do
     admin = create(:admin)
     create_list(:tutorial, 2)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    stub_user(admin)
 
     visit '/admin/dashboard'
 

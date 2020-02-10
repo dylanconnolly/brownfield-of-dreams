@@ -2,44 +2,51 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: 'btn btn-primary mb1 bg-teal' %>
-  <%= button_to 'Connect to Github', github_login_path, class: 'btn btn-primary mb1 bg-teal' %>
+
+  <% if !current_user.github_token %>
+    <section id='github-button'>
+      <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: 'btn btn-primary mb1 bg-teal' %>
+    </section>
+  <% end %>
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+  
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
 
-<% if current_user.github_token != nil %>
-  <section>
-    <h1> GitHub </h1>
-      <section id='github-repos'>
-        <h3> Repos </h3>
-          <% repo_data.each do |repo| %>
-            <ul class='github-repo'>
-              <li class='name'><%= link_to repo.name, repo.html_url %></li>
-            </ul>
-          <% end %>
-      </section>
-      <section id='github-followers'>
-        <h3> Followers </h3>
-          <% followers_data.each do |follower| %>
-            <ul class='github-follower'>
-              <li class='login'><%= link_to follower.login, follower.html_url %></li>
-            </ul>
-          <% end %>
-      </section>
-      <section id='github-followings'>
-        <h3> Following </h3>
-          <% following_data.each do |following| %>
-            <ul class='github-followimng'>
-              <li class='login'><%= link_to following.login, following.html_url %></li>
-            </ul>
-          <% end %>
-      </section>
-  </section>
+  <% if current_user.github_token != nil %>
+    <section>
+      <h1> GitHub </h1>
+        <section id='github-repos'>
+          <h3> Repos </h3>
+            <% repo_data.each do |repo| %>
+              <ul class='github-repo'>
+                <li class='name'><%= link_to repo.name, repo.html_url %></li>
+              </ul>
+            <% end %>
+        </section>
+        <section id='github-followers'>
+          <h3> Followers </h3>
+            <% followers_data.each do |follower| %>
+              <ul class='github-follower'>
+                <li class='login'><%= link_to follower.login, follower.html_url %></li>
+              </ul>
+            <% end %>
+        </section>
+        <section id='github-followings'>
+          <h3> Following </h3>
+            <% following_data.each do |following| %>
+              <ul class='github-followimng'>
+                <li class='login'><%= link_to following.login, following.html_url %></li>
+              </ul>
+            <% end %>
+        </section>
+    </section>
+  <% end %>
 
 </section>
-<% end %>
