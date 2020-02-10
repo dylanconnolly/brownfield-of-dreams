@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :tutorials, only: [:show, :index]
-  resources :users, only: [:new, :create, :update, :edit]
+  resources :users, only: [:new, :create, :update, :edit] do
+    get '/activation', to: 'activation#show'
+  end
   resources :user_videos, only: [:create, :destroy]
 
   root 'welcome#index'
