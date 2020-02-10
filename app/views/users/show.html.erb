@@ -11,6 +11,8 @@
     </section>
   <% end %>
 
+  <%= link_to "Send an Invite", invite_path %>
+
   <h3>Account Details</h3>
   <% if current_user.activated %>
     Status: Active
