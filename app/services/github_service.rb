@@ -16,10 +16,13 @@ class GithubService
     get_json('/user/following')
   end
 
+  def invitee_handle(handle)
+    get_json("/users/#{handle}")
+  end
+
   private
 
   def connection
-    # require "pry"; binding.pry
     Faraday.new('https://api.github.com') do |f|
       f.headers['Authorization'] = "token #{@user_token}"
       f.adapter Faraday.default_adapter
