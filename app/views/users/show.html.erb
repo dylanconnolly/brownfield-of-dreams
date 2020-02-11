@@ -45,7 +45,7 @@
               <ul class='github-follower'>
                 <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
                   <% if follower.is_user_in_database? %>
-                    <%= button_to "Add as Friend", friendships_path, method: :post %>
+                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{follower.github_handle}", method: :post %>
                   <% end %>
                 </li>
               </ul>
@@ -57,7 +57,7 @@
               <ul class='github-following'>
                 <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
                   <% if following.is_user_in_database? %>
-                    <%= button_to "Add as Friend", friendships_path, method: :post %>
+                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{following.github_handle}", method: :post %>
                   <% end %>
                 </li>
               </ul>
