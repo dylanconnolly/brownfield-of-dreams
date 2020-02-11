@@ -10,4 +10,10 @@ class UserDashboardFacade
   def all_followings(token)
     UserGithubFollowing.new.followings(token)
   end
+
+  def friends(user)
+    user.friendships.map do |friendship|
+      User.find(friendship.friend_id)
+    end
+  end
 end
