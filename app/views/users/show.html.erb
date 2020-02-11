@@ -43,15 +43,23 @@
           <h3> Followers </h3>
             <% followers_data.each do |follower| %>
               <ul class='github-follower'>
-                <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %></li>
+                <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
+                  <% if follower.is_user_in_database? %>
+                    <%= button_to "Add as Friend", friendships_path, method: :post %>
+                  <% end %>
+                </li>
               </ul>
             <% end %>
         </section>
         <section id='github-followings'>
           <h3> Following </h3>
             <% following_data.each do |following| %>
-              <ul class='github-followimng'>
-                <li class='github-handle'><%= link_to following.github_handle, following.html_url %></li>
+              <ul class='github-following'>
+                <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
+                  <% if following.is_user_in_database? %>
+                    <%= button_to "Add as Friend", friendships_path, method: :post %>
+                  <% end %>
+                </li>
               </ul>
             <% end %>
         </section>
