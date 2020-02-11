@@ -20,7 +20,7 @@ describe "as a user" do
     expect(page).to have_content('Successfully sent invite!')
   end
 
-  xit "sees an error message if github account does not have an email address listed", :vcr do
+  it "sees an error message if github account does not have an email address listed", :vcr do
     user = create(:user)
 
     stub_user(user)
