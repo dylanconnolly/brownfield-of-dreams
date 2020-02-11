@@ -1,4 +1,5 @@
 class InviteeFacade
+  attr_reader :user
 
   def initialize(user, handle)
     @user = user
