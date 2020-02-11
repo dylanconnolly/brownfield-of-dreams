@@ -4,9 +4,8 @@ class InvitesController < ApplicationController
 
   def create
     invitee_info = InviteeFacade.new(current_user, params[:github_handle])
-    require "pry"; binding.pry
     if validate_email(invitee_info.invitee)
-      InvitationMailer.invite(current_user, invitee_info)
+      InvitationMailer.invite(invitee_info).deliver_now
       flash[:success] = "Successfully sent invite!"
     else
       flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
