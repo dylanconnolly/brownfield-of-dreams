@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/register', to: 'users#new'
+  get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
