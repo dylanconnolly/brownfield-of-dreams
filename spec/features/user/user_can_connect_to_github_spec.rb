@@ -10,6 +10,11 @@ describe 'A registered User' do
         token: ENV['GITHUB_PERSONAL_TOKEN'],
         expires: false
       },
+      extra: {
+        raw_info: {
+          login: 'github_handle'
+        }
+      }
     })
 
     user = create(:user)

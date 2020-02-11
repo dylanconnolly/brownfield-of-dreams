@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     render locals: {
       repo_data: UserDashboardFacade.new.take_5_repos(current_user.github_token),
       followers_data: UserDashboardFacade.new.all_followers(current_user.github_token),
-      following_data: UserDashboardFacade.new.all_followings(current_user.github_token)
+      following_data: UserDashboardFacade.new.all_followings(current_user.github_token),
+      dashboard_data: UserDashboardFacade.new
     }
     end
   end
@@ -27,7 +28,10 @@ class UsersController < ApplicationController
 
   def edit
     user_info = request.env['omniauth.auth']
-    current_user.update(github_token: user_info["credentials"]["token"])
+    current_user.update(
+      github_token: user_info[:credentials][:token],
+      github_handle: user_info[:extra][:raw_info][:login]
+    )
     redirect_to dashboard_path
   end
 

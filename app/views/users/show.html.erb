@@ -43,17 +43,33 @@
           <h3> Followers </h3>
             <% followers_data.each do |follower| %>
               <ul class='github-follower'>
-                <li class='login'><%= link_to follower.login, follower.html_url %></li>
+                <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
+                  <% if follower.is_user_in_database? %>
+                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{follower.github_handle}", method: :post %>
+                  <% end %>
+                </li>
               </ul>
             <% end %>
         </section>
         <section id='github-followings'>
           <h3> Following </h3>
             <% following_data.each do |following| %>
-              <ul class='github-followimng'>
-                <li class='login'><%= link_to following.login, following.html_url %></li>
+              <ul class='github-following'>
+                <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
+                  <% if following.is_user_in_database? %>
+                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{following.github_handle}", method: :post %>
+                  <% end %>
+                </li>
               </ul>
             <% end %>
+        </section>
+        <section id="friendships">
+          <h3>Friends</h3>
+          <% dashboard_data.friends(current_user).each do |friend| %>
+            <ul>
+              <li class="friend"><%= friend.github_handle %></li>
+            </ul>
+          <% end %>
         </section>
     </section>
   <% end %>
