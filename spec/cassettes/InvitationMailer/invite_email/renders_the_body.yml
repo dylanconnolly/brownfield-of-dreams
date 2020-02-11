@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 11 Feb 2020 03:29:46 GMT
+      - Tue, 11 Feb 2020 04:53:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,20 +33,20 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4960'
+      - '4969'
       X-Ratelimit-Reset:
-      - '1581392448'
+      - '1581400228'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       - Accept-Encoding, Accept
       Etag:
-      - W/"488c8d5e6d5a534a6679960cf97909c0"
+      - W/"fd7cc9d4c1627f19337664f2be15cd0d"
       Last-Modified:
       - Fri, 31 Jan 2020 08:56:40 GMT
       X-Oauth-Scopes:
-      - repo, user
+      - admin:repo_hook, repo, user
       X-Accepted-Oauth-Scopes:
       - ''
       X-Github-Media-Type:
@@ -70,12 +70,12 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - F695:603B:247406:453577:5E421FA9
+      - C785:6E48:1A3443:349F91:5E423365
     body:
       encoding: ASCII-8BIT
       string: '{"login":"octocat","id":583231,"node_id":"MDQ6VXNlcjU4MzIzMQ==","avatar_url":"https://avatars3.githubusercontent.com/u/583231?v=4","gravatar_id":"","url":"https://api.github.com/users/octocat","html_url":"https://github.com/octocat","followers_url":"https://api.github.com/users/octocat/followers","following_url":"https://api.github.com/users/octocat/following{/other_user}","gists_url":"https://api.github.com/users/octocat/gists{/gist_id}","starred_url":"https://api.github.com/users/octocat/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/octocat/subscriptions","organizations_url":"https://api.github.com/users/octocat/orgs","repos_url":"https://api.github.com/users/octocat/repos","events_url":"https://api.github.com/users/octocat/events{/privacy}","received_events_url":"https://api.github.com/users/octocat/received_events","type":"User","site_admin":false,"name":"The
         Octocat","company":"GitHub","blog":"http://www.github.com/blog","location":"San
         Francisco","email":"octocat@github.com","hireable":null,"bio":null,"public_repos":8,"public_gists":8,"followers":2950,"following":9,"created_at":"2011-01-25T18:44:36Z","updated_at":"2020-01-31T08:56:40Z"}'
     http_version: 
-  recorded_at: Tue, 11 Feb 2020 03:29:46 GMT
+  recorded_at: Tue, 11 Feb 2020 04:53:58 GMT
 recorded_with: VCR 4.0.0

@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 11 Feb 2020 03:12:24 GMT
+      - Tue, 11 Feb 2020 04:53:49 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -35,9 +35,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '59'
+      - '42'
       X-Ratelimit-Reset:
-      - '1581394344'
+      - '1581398818'
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
@@ -59,10 +59,10 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept
       X-Github-Request-Id:
-      - F5F1:7599:143FF6:30360C:5E421B98
+      - C724:3E9F:12FEA0:28B9F0:5E42335D
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Tue, 11 Feb 2020 03:12:24 GMT
+  recorded_at: Tue, 11 Feb 2020 04:53:50 GMT
 recorded_with: VCR 4.0.0
