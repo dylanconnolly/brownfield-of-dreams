@@ -1,8 +1,8 @@
 class Following
-  attr_reader :login, :html_url
+  attr_reader :github_handle, :html_url
 
   def initialize(following_data)
-    @login = following_data[:login]
+    @github_handle = following_data[:login]
     @html_url = following_data[:html_url]
   end
 end
