@@ -1,8 +1,8 @@
 class InvitationMailer < ApplicationMailer
 
-  def invite(user, invitee_facade)
-    @user = user
+  def invite(invitee_facade)
+    @user = invitee_facade.user
     @invitee = invitee_facade.invitee
-    mail(to: @invitee.email, subject: "#{user.handle} has invited you to join Turing Tutorials")
+    mail(to: @invitee.email, subject: "#{@user.first_name} has invited you to join Turing Tutorials")
   end
 end
