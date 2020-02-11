@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/register', to: 'users#new'
+  get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'users#edit'
 
   get '/dashboard', to: 'users#show'
+  get '/invite', to: 'invites#new'
+  post '/invite', to: 'invites#create'
   # Is this being used?
   get '/video', to: 'video#show'
 end
