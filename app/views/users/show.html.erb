@@ -63,6 +63,14 @@
               </ul>
             <% end %>
         </section>
+        <section id="friendships">
+          <h3>Friends</h3>
+          <% dashboard_data.friends(current_user).each do |friend| %>
+            <ul>
+              <li class="friend"><%= friend.github_handle %></li>
+            </ul>
+          <% end %>
+        </section>
     </section>
   <% end %>
 
