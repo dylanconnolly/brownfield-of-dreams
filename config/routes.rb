@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/friendships', to: 'friendships#create'
+
   resources :tutorials, only: [:show, :index]
   resources :users, only: [:new, :create, :update, :edit] do
     get '/activation', to: 'activation#show'
