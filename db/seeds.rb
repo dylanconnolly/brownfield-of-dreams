@@ -139,14 +139,16 @@ User.create!(
   last_name: Faker::Name.last_name,
   password: 'password',
   role: :default,
-  github_token: ENV['SECONDARY_GITHUB_PERSONAL_TOKEN']
+  github_token: ENV['SECONDARY_GITHUB_PERSONAL_TOKEN'],
+  github_handle: 'BabsLabs'
 )
 User.create!(
   email: 'user_3@example.com',
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   password: 'password',
-  role: :default
+  role: :default,
+  github_handle: 'mikecm1141'
 )
 User.create!(
   email: 'user_4@example.com',
