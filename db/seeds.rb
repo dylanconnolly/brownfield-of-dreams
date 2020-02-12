@@ -10,14 +10,14 @@ prework_tutorial_data = {
 
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
-prework_tutorial.videos.create!({
+prework_video_1 = prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"qMkRHW9zE1c",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "position"=>1
 })
-prework_tutorial.videos.create!({
+prework_video_2 = prework_tutorial.videos.create!({
   "title"=>"Prework - SSH Key Setup",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"XsPVWGKK0qI",
@@ -31,7 +31,7 @@ prework_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/iXLwXvev4X8/hqdefault.jpg",
   "position"=>3
 })
-prework_tutorial.videos.create!({
+prework_video_4 = prework_tutorial.videos.create!({
   "title"=>"Prework - Arrays",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"c2UnIQ3LRnM",
@@ -56,7 +56,7 @@ m1_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg",
   "position"=>1
 })
-m1_tutorial.videos.create!({
+m1_video_2 = m1_tutorial.videos.create!({
   "title"=>"How to use SimpleCov",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"WMgDD2lU5nY",
@@ -82,7 +82,7 @@ m3_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/cv1VQ_9OqvE/hqdefault.jpg",
   "position"=>1
 })
-m3_tutorial.videos.create!({
+m3_video_2 = m3_tutorial.videos.create!({
   "title"=>"Rails Integration Testing",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"J7ikFUlkP_k",
@@ -96,14 +96,14 @@ m3_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg",
   "position"=>3
 })
-m3_tutorial.videos.create!({
+m3_video_4 = m3_tutorial.videos.create!({
   "title"=>"Stubbing External API Calls in Rails",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"FUYoJTtfJ20",
   "thumbnail"=>"https://i.ytimg.com/vi/FUYoJTtfJ20/hqdefault.jpg",
   "position"=>4
 })
-m3_tutorial.videos.create!({
+m3_video_5 = m3_tutorial.videos.create!({
   "title"=>"B3 - Making Fetch Happen",
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"lqx4sD0E6eY",
@@ -125,7 +125,7 @@ User.create!(
   password: 'password',
   role: :admin
 )
-User.create!(
+user_1 = User.create!(
   email: 'user_1@example.com',
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -133,7 +133,7 @@ User.create!(
   role: :default,
   github_token: ENV['GITHUB_PERSONAL_TOKEN']
 )
-User.create!(
+user_2 = User.create!(
   email: 'user_2@example.com',
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -157,3 +157,16 @@ User.create!(
   password: 'password',
   role: :default
 )
+
+## user bookmarks
+
+user_1.videos << prework_video_1
+user_1.videos << prework_video_2
+user_1.videos << m1_video_2
+user_1.videos << m3_video_2
+user_1.videos << m3_video_4
+user_1.videos << m3_video_5
+
+user_2.videos << prework_video_4
+user_2.videos << m1_video_2
+user_2.videos << m3_video_5
