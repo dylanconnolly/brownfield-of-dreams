@@ -6,7 +6,7 @@ class Follower
     @html_url = follower_data[:html_url]
   end
 
-  def is_user_in_database?
+  def user_in_database?
     User.find_by(github_handle: github_handle)
   end
 end

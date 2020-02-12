@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   def show
-    if current_user.github_token
+    return unless current_user.github_token
+
     render locals: {
       repo_data: UserDashboardFacade.new.take_5_repos(current_user.github_token),
       followers_data: UserDashboardFacade.new.all_followers(current_user.github_token),
       following_data: UserDashboardFacade.new.all_followings(current_user.github_token),
       dashboard_data: UserDashboardFacade.new
     }
-    end
   end
 
   def new
