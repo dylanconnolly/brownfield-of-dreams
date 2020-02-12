@@ -2,13 +2,16 @@ class UserVideosController < ApplicationController
   def new; end
 
   def create
-    user_video = UserVideo.new(user_video_params)
-    if current_user.user_videos.find_by(video_id: user_video.video_id)
-      flash[:error] = 'Already in your bookmarks'
-    elsif user_video.save
-      flash[:success] = 'Bookmark added to your dashboard!'
+    if current_user
+      user_video = UserVideo.new(user_video_params)
+      if current_user.user_videos.find_by(video_id: user_video.video_id)
+        flash[:error] = 'Already in your bookmarks'
+      else user_video.save
+        flash[:success] = 'Bookmark added to your dashboard!'
+      end
     end
-    redirect_back(fallback_location: root_path)
+      flash[:notice] = "You must log in to bookmark videos."
+      redirect_back(fallback_location: root_path)
   end
 
   private
