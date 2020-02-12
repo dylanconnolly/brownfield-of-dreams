@@ -20,13 +20,12 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :tutorials, only: [:show, :index]
+  resources :user_videos, only: [:create, :destroy]
   resources :users, only: [:new, :create, :update, :edit] do
     get '/activation', to: 'activation#show'
     post '/friendships', to: 'friendships#create'
   end
-  resources :user_videos, only: [:create, :destroy]
 
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
@@ -35,6 +34,8 @@ Rails.application.routes.draw do
 
   get '/register', to: 'users#new'
   get '/signup', to: 'users#new'
+  get '/dashboard', to: 'users#show'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -42,7 +43,6 @@ Rails.application.routes.draw do
   get 'auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'users#edit'
 
-  get '/dashboard', to: 'users#show'
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
   # Is this being used?
