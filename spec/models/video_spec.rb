@@ -40,6 +40,7 @@ RSpec.describe Video, type: :model do
       expect(Video.bookmarked_videos(user.id).length).to eq(4)
       expect(Video.bookmarked_videos(user.id).first.id).to eq(prework_video_1.id)
       expect(Video.bookmarked_videos(user.id)[1].id).to eq(prework_video_3.id)
+      expect(Video.bookmarked_videos(user.id)[2].id).to eq(m1_video_1.id)
 
       expect(Video.bookmarked_videos(user_2.id).length).to eq(3)
       expect(Video.bookmarked_videos(user_2.id).first.id).to eq(prework_video_1.id)
