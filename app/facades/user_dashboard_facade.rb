@@ -16,4 +16,8 @@ class UserDashboardFacade
       User.find(friendship.friend_id)
     end
   end
+
+  def bookmarked_videos(user_id)
+    Video.bookmarked_videos(user_id)
+  end
 end
