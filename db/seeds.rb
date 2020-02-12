@@ -1,4 +1,6 @@
 User.destroy_all
+Tutorial.destroy_all
+Video.destroy_all
 
 prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
