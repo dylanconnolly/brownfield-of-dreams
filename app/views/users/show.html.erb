@@ -24,8 +24,14 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
-  <section>
+
+  <section id="bookmarks">
     <h1>Bookmarked Segments</h1>
+      <% dashboard_data.bookmarked_videos(current_user.id).each do |video| %>
+        <ul>
+          <li class="bookmarked-video"> <%= video.tutorial_title %>: <%= link_to video.title, "/tutorials/#{video.tutorial_id}?video_id=#{video.id}" %></li>
+        </ul>
+      <% end %>
   </section>
 
   <% if current_user.github_token != nil %>
