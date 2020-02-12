@@ -1,4 +1,3 @@
-User.destroy_all
 
 prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
@@ -119,8 +118,8 @@ m3_tutorial.videos.create!({
 })
 
 User.create!(
-  email: 'admin@example.com',
-  first_name: 'Bossy',
+  email: 'admin_2@example.com',
+  first_name: 'Mr. Bossy',
   last_name: 'McBosserton',
   password: 'password',
   role: :admin
