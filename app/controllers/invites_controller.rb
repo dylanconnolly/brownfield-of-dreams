@@ -6,10 +6,11 @@ class InvitesController < ApplicationController
     if validate_email(invitee_info.invitee)
       InvitationMailer.invite(invitee_info).deliver_now
       flash[:success] = 'Successfully sent invite!'
+      redirect_to dashboard_path
     else
       flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
+      redirect_back(fallback_location: root_path)
     end
-    redirect_to dashboard_path
   end
 
   private

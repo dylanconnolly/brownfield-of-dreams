@@ -6,17 +6,17 @@ describe "as a user" do
 
     stub_user(user)
 
-    visit '/dashboard'
+    visit dashboard_path
 
     click_on "Send an Invite"
 
-    expect(current_path).to eq('/invite')
+    expect(current_path).to eq(invite_path)
 
     fill_in :github_handle, with: "octocat"
 
     click_on "Send Invite"
 
-    expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')
   end
 
@@ -25,17 +25,17 @@ describe "as a user" do
 
     stub_user(user)
 
-    visit '/dashboard'
+    visit dashboard_path
 
     click_on "Send an Invite"
 
-    expect(current_path).to eq('/invite')
+    expect(current_path).to eq(invite_path)
 
     fill_in :github_handle, with: "dylanconnolly"
 
     click_on "Send Invite"
 
-    expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq(invite_path)
     expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 end
