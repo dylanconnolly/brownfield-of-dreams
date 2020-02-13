@@ -1,5 +1,12 @@
-<%= form_tag '/invite' do %>
-  <%= label_tag :github_handle %>
-  <%= text_field_tag :github_handle %>
-  <%= submit_tag "Send Invite" %>
-<% end %>
+<div class="invite">
+  <main>
+<h4>Invite a Friend</h4>
+  <section>
+    <%= form_tag invite_path do %>
+      <%= label_tag :github_handle %>
+      <%= text_field_tag :github_handle %>
+      <%= submit_tag "Send Invite", class: "mt2 btn btn-primary mb1 bg-teal" %>
+    <% end %>
+  </section>
+  </main>
+</div>
