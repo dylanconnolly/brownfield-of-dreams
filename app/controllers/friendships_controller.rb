@@ -5,7 +5,8 @@ class FriendshipsController < ApplicationController
     if friendship.save
       flash[:success] = 'Added friend!'
     else
-      flash[:error] = 'Unable to add friend. That user does not have a registered account with Turing Tutorials.'
+      flash[:error] = 'Unable to add friend.
+      That user does not have a registered account with Turing Tutorials.'
     end
     redirect_to dashboard_path
   end
