@@ -47,7 +47,7 @@
               <% dashboard_data.all_followers(current_user.github_token).each do |follower| %>
                 <ul class='github-follower'>
                   <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
-                    <% if follower.user_in_database? %>
+                    <% if follower.user_in_database? && !follower.already_friend(current_user) %>
                       <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{follower.github_handle}", method: :post %>
                     <% end %>
                   </li>
@@ -59,7 +59,7 @@
               <% dashboard_data.all_followings(current_user.github_token).each do |following| %>
                 <ul class='github-following'>
                   <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
-                    <% if following.user_in_database? %>
+                    <% if following.user_in_database? && !following.already_friend(current_user) %>
                       <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{following.github_handle}", method: :post %>
                     <% end %>
                   </li>
