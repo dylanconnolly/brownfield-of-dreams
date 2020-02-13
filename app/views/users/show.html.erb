@@ -1,83 +1,80 @@
 <section class='dashboard-main'>
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
-  <h4> Logged in as <%= current_user.first_name + ' ' + current_user.last_name %></h4>
-
-  <%= button_to 'Log Out', logout_path, method: 'delete', class: 'btn btn-primary mb1 bg-teal' %>
-
   <% if !current_user.github_token %>
     <section id='github-button'>
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: 'btn btn-primary mb1 bg-teal' %>
     </section>
   <% end %>
 
-  <%= link_to "Send an Invite", invite_path %>
+  <% if !current_user.admin? %>
+    <%= button_to "Send an Invite", invite_path, method: 'get', class: 'btn btn-primary mb1 bg-teal' %>
+  <% end %>
 
   <h3>Account Details</h3>
-  <% if current_user.activated %>
-    Status: Active
-  <% else %>
-    This account has not yet been activated. Please check your email.
-  <% end %>
+    <% if current_user.activated %>
+      Status: Active
+    <% else %>
+      This account has not yet been activated. Please check your email.</br></br>
+    <% end %>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
 
-
-  <section id="bookmarks">
-    <h1>Bookmarked Segments</h1>
-      <% dashboard_data.bookmarked_videos(current_user.id).each do |video| %>
-        <ul>
-          <li class="bookmarked-video"> <%= video.tutorial_title %>: <%= link_to video.title, "/tutorials/#{video.tutorial_id}?video_id=#{video.id}" %></li>
-        </ul>
-      <% end %>
-  </section>
-
-  <% if current_user.github_token != nil %>
-    <section>
-      <h1> GitHub </h1>
-        <section id='github-repos'>
-          <h3> Repos </h3>
-            <% dashboard_data.take_5_repos(current_user.github_token).each do |repo| %>
-              <ul class='github-repo'>
-                <li class='name'><%= link_to repo.name, repo.html_url %></li>
-              </ul>
-            <% end %>
-        </section>
-        <section id='github-followers'>
-          <h3> Followers </h3>
-            <% dashboard_data.all_followers(current_user.github_token).each do |follower| %>
-              <ul class='github-follower'>
-                <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
-                  <% if follower.user_in_database? %>
-                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{follower.github_handle}", method: :post %>
-                  <% end %>
-                </li>
-              </ul>
-            <% end %>
-        </section>
-        <section id='github-followings'>
-          <h3> Following </h3>
-            <% dashboard_data.all_followings(current_user.github_token).each do |following| %>
-              <ul class='github-following'>
-                <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
-                  <% if following.user_in_database? %>
-                    <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{following.github_handle}", method: :post %>
-                  <% end %>
-                </li>
-              </ul>
-            <% end %>
-        </section>
-        <section id="friendships">
-          <h3>Friends</h3>
-          <% dashboard_data.friends(current_user).each do |friend| %>
-            <ul>
-              <li class="friend"><%= friend.github_handle %></li>
-            </ul>
-          <% end %>
-        </section>
+  <% if !current_user.admin? %>
+    <section id="bookmarks">
+      <h1>Bookmarked Segments</h1>
+        <% dashboard_data.bookmarked_videos(current_user.id).each do |video| %>
+          <ul>
+            <li class="bookmarked-video"> <%= video.tutorial_title %>: <%= link_to video.title, "/tutorials/#{video.tutorial_id}?video_id=#{video.id}" %></li>
+          </ul>
+        <% end %>
     </section>
+    <% if current_user.github_token != nil %>
+      <section>
+        <h1> GitHub </h1>
+          <section id='github-repos'>
+            <h3> Repos </h3>
+              <% dashboard_data.take_5_repos(current_user.github_token).each do |repo| %>
+                <ul class='github-repo'>
+                  <li class='name'><%= link_to repo.name, repo.html_url %></li>
+                </ul>
+              <% end %>
+          </section>
+          <section id='github-followers'>
+            <h3> Followers </h3>
+              <% dashboard_data.all_followers(current_user.github_token).each do |follower| %>
+                <ul class='github-follower'>
+                  <li class='github-handle'><%= link_to follower.github_handle, follower.html_url %>
+                    <% if follower.user_in_database? %>
+                      <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{follower.github_handle}", method: :post %>
+                    <% end %>
+                  </li>
+                </ul>
+              <% end %>
+          </section>
+          <section id='github-followings'>
+            <h3> Following </h3>
+              <% dashboard_data.all_followings(current_user.github_token).each do |following| %>
+                <ul class='github-following'>
+                  <li class='github-handle'><%= link_to following.github_handle, following.html_url %>
+                    <% if following.user_in_database? %>
+                      <%= button_to "Add as Friend", "/users/#{current_user.id}/friendships?handle=#{following.github_handle}", method: :post %>
+                    <% end %>
+                  </li>
+                </ul>
+              <% end %>
+          </section>
+          <section id="friendships">
+            <h3>Friends</h3>
+            <% dashboard_data.friends(current_user).each do |friend| %>
+              <ul>
+                <li class="friend"><%= friend.github_handle %></li>
+              </ul>
+            <% end %>
+          </section>
+      </section>
+    <% end %>
   <% end %>
-
 </section>
